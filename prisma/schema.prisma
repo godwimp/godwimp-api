@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model projects {
+  id          String   @id @default(uuid()) @db.Uuid
+  slug        String   @unique @db.VarChar
+  title       String   @db.VarChar
+  description String
+  highlights  String[]
+  tech_stack  String[]
+  category    String?  @db.VarChar
+  is_featured Boolean  @default(false)
+  github_url  String?  @db.VarChar
+  live_url    String?  @db.VarChar
+  npm_url     String?  @db.VarChar
+  order_index Int?
+  created_at  DateTime @default(now())
+  updated_at  DateTime @default(now())
+}
