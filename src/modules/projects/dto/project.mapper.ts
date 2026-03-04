@@ -18,9 +18,9 @@ export function toProjectDto(project: projects): ProjectResponseDto {
 }
 
 export function toProjectListResponse(projects: projects[]): ProjectListResponseDto {
-  return { data: projects.map(toProjectDto) };
+  return projects.map(toProjectDto);
 }
 
 export function toProjectSingleResponse(project: projects): ProjectSingleResponseDto {
-  return { data: toProjectDto(project) };
+  return toProjectDto(project);
 }

@@ -12,10 +12,6 @@ export class ProjectResponseDto {
   npmUrl!: string | null;
 }
 
-export class ProjectListResponseDto {
-  data!: ProjectResponseDto[];
-}
+export type ProjectListResponseDto = ProjectResponseDto[];
 
-export class ProjectSingleResponseDto {
-  data!: ProjectResponseDto;
-}
+export type ProjectSingleResponseDto = ProjectResponseDto;
