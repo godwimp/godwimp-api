@@ -1,4 +1,11 @@
+import { IsNotEmpty, IsString, IsOptional } from "class-validator";
+
 export class CreateVisitDto {
-  page: string;
+  @IsNotEmpty()
+  @IsString()
+  page!: string;
+
+  @IsOptional()
+  @IsString()
   referrer?: string;
 }

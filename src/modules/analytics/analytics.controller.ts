@@ -8,7 +8,7 @@ import {
   Req,
   UseGuards,
 } from '@nestjs/common';
-import { Request } from 'express';
+import type { Request } from 'express';
 import { AnalyticsService } from './analytics.service';
 import { ApiKeyGuard } from 'src/common/guards/api-key.guard';
 import { CreateVisitDto } from './dto/visit.dto';
