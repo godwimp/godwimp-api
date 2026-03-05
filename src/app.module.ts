@@ -8,6 +8,7 @@ import { RedisModule } from './redis/redis.module';
 import { PrismaModule } from './common/prisma/prisma.module';
 import { ProjectsModule } from './modules/projects/projects.module';
 import { HealthModule } from './modules/health/health.module';
+import { AnalyticsModule } from './modules/analytics/analytics.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { HealthModule } from './modules/health/health.module';
     PrismaModule,
     ProjectsModule,
     HealthModule,
+    AnalyticsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

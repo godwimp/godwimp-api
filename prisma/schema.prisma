@@ -8,6 +8,18 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
+model page_visits {
+  id         String   @id @default(uuid()) @db.Uuid
+  page       String   @db.VarChar
+  referrer   String?  @db.VarChar
+  user_agent String?
+  ip         String?  @db.VarChar
+  visited_at DateTime @default(now())
+
+  @@index([page])
+  @@index([visited_at])
+}
+
 model projects {
   id          String   @id @default(uuid()) @db.Uuid
   slug        String   @unique @db.VarChar
