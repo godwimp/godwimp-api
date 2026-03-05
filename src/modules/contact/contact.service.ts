@@ -13,7 +13,7 @@ export class ContactService {
 
   async send(dto: ContactDto): Promise<{ id: string }> {
     const to = this.config.get<string>('CONTACT_TO_EMAIL') ?? 'fadhiel@godwimp.me';
-    const from = this.config.get<string>('CONTACT_FROM_EMAIL') ?? 'fadhiel@godwimp.me';
+    const from = this.config.get<string>('CONTACT_FROM_EMAIL') ?? 'contact@godwimp.me';
 
     const { data, error } = await this.resend.emails.send({
       from: `godwimp.me Contact <${from}>`,
