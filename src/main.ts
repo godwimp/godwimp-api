@@ -11,7 +11,7 @@ async function bootstrap() {
 
   const allowedOrigins = isDev
     ? ['http://localhost:3000', 'http://localhost:3001']
-    : (process.env.ALLOWED_ORIGINS ?? 'https://godwimp.me').split(',').map((o) => o.trim());
+    : (process.env.ALLOWED_ORIGINS ?? 'https://godwimp.me,https://www.godwimp.me').split(',').map((o) => o.trim());
 
   app.enableCors({
     origin: allowedOrigins,
