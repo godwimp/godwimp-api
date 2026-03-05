@@ -9,6 +9,7 @@ import { PrismaModule } from './common/prisma/prisma.module';
 import { ProjectsModule } from './modules/projects/projects.module';
 import { HealthModule } from './modules/health/health.module';
 import { AnalyticsModule } from './modules/analytics/analytics.module';
+import { AdminModule } from './modules/admin/admin.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { AnalyticsModule } from './modules/analytics/analytics.module';
     ProjectsModule,
     HealthModule,
     AnalyticsModule,
+    AdminModule,
   ],
   controllers: [AppController],
   providers: [AppService],
