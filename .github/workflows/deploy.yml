@@ -1,0 +1,27 @@
+name: Deploy to DigitalOcean
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'godwimp-api/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.DO_HOST }}
+          username: ${{ secrets.DO_USER }}
+          key: ${{ secrets.DO_SSH_KEY }}
+          script: |
+            cd ~/godwimp-api
+            git pull origin main
+            npm install --production
+            npm run build
+            npx prisma migrate deploy
+            pm2 restart godwimp-api
