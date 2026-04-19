@@ -13,6 +13,7 @@ import { AdminModule } from './modules/admin/admin.module';
 import { ContactModule } from './modules/contact/contact.module';
 import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
 import { APP_GUARD } from '@nestjs/core';
+import { GithubModule } from './modules/github/github.module';
 
 @Module({
   imports: [
@@ -40,6 +41,7 @@ import { APP_GUARD } from '@nestjs/core';
     AnalyticsModule,
     AdminModule,
     ContactModule,
+    GithubModule
   ],
   controllers: [AppController],
   providers: [AppService, { provide: APP_GUARD, useClass: ThrottlerGuard }],
