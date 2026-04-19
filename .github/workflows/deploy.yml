@@ -19,9 +19,10 @@ jobs:
           username: ${{ secrets.DO_USER }}
           key: ${{ secrets.DO_SSH_KEY }}
           script: |
-            cd ~/godwimp-api
-            git pull origin main
-            npm install --production
-            npm run build
-            npx prisma migrate deploy
-            pm2 restart godwimp-api
+              cd ~/godwimp-api
+              git pull origin main
+              npm install
+              npm run build
+              npx prisma migrate deploy
+              pm2 startOrRestart ecosystem.config.js --env production
+              pm2 save
