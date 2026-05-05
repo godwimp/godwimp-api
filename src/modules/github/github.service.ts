@@ -148,7 +148,9 @@ export class GithubService {
     return {
       totalRepositories: user.repositories.totalCount,
       totalStars,
-      totalCommitsThisYear: user.contributionsCollection.totalCommitContributions,
+      totalCommitsThisYear:
+        user.contributionsCollection.totalCommitContributions +
+        (user.contributionsCollection.restrictedContributionsCount || 0),
       totalPRs: user.contributionsCollection.totalPullRequestContributions,
       followers: user.followers.totalCount,
       languages,

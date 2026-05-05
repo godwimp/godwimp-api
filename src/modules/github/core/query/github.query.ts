@@ -48,6 +48,7 @@ export const GITHUB_STATS_QUERY = `
       }
       contributionsCollection(from: $from, to: $to) {
         totalCommitContributions
+        restrictedContributionsCount
         totalPullRequestContributions
         contributionCalendar {
           weeks {
