@@ -1,4 +1,4 @@
-name: Deploy to DigitalOcean
+name: Deploy to AWS EC2
 
 on:
   push:
@@ -16,14 +16,22 @@ jobs:
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.2.0
         with:
-          host: ${{ secrets.DO_HOST }}
-          username: ${{ secrets.DO_USER }}
-          key: ${{ secrets.DO_SSH_KEY }}
+          host: ${{ secrets.AWS_HOST }}
+          username: ${{ secrets.AWS_USER }}
+          key: ${{ secrets.AWS_SSH_KEY }}
           script: |
-              cd ~/godwimp-api
-              git pull origin main
-              npm install
-              npm run build
-              npx prisma migrate deploy
-              pm2 startOrRestart ecosystem.config.js --env production
-              pm2 save
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            
+            # Pindah ke folder deployment AWS
+            cd /var/www/godwimp-api
+            
+            # Tarik kode dan build
+            git pull origin main
+            npm install
+            npm run build
+            npx prisma migrate deploy
+            
+            # Restart PM2
+            pm2 startOrRestart ecosystem.config.js --env production
+            pm2 save
